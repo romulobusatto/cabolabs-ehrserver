@@ -1,0 +1,37 @@
+version: '2'
+# ************ README ****************
+# Reads env vars from .env
+# Requires docker-compose version 1.7+
+# ************************************
+
+services:
+  # EHRSERVER
+  app:
+    image: ehrserver
+    container_name: ehrserver-app
+    volumes:
+      - .:/var/www/app
+    ports:
+      - "8090:8090"
+    links:
+      - mysql:5.5
+    networks:
+      - my-network
+
+  # MySQL (5.5)
+  mysql:
+    image: mysql:5.5
+    container_name: ehrmysql-5
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=ehrserver
+      - MYSQL_USER=ehrserver
+      - MYSQL_PASSWORD=ehrserver
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
