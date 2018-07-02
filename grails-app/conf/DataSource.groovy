@@ -39,21 +39,21 @@ hibernate {
 environments {
     development {
         dataSource {
-           dbCreate = "create-drop" //"update" // one of 'create', 'create-drop', 'update', 'validate', ''
+           dbCreate = "create" //"update" // one of 'create', 'create-drop', 'update', 'validate', ''
 
            //logSql = true
 
            // ===========================================================
            // Config for OpenShift ======================================
 
-           String host = "localhost"
+           String host = "172.21.0.2"
            String port = 3306
            String dbName = "ehrserver"
 
            url = "jdbc:mysql://$host:$port/$dbName" // ?useTimezone=true&serverTimezone=UTC
 
            username = 'root'
-           password = ''
+           password = 'root'
         }
     }
     test {
