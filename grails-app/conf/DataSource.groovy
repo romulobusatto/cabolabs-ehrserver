@@ -46,7 +46,7 @@ environments {
            // ===========================================================
            // Config for OpenShift ======================================
 
-           String host = "172.21.0.2"
+           String host = "10.5.0.5"
            String port = 3306
            String dbName = "ehrserver"
 
