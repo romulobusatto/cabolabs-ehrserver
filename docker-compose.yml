@@ -16,7 +16,7 @@ services:
     links:
       - mysql:5.5
     networks:
-      rede:
+      ehr-project:
         ipv4_address: 10.5.0.6
 
   # MySQL (5.5)
@@ -24,20 +24,16 @@ services:
     image: mysql:5.5
     container_name: ehrmysql-5
     ports:
-      - "3307:3306"
+      - "3308:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=ehrserver
       - MYSQL_USER=ehrserver
       - MYSQL_PASSWORD=ehrserver
     networks:
-      rede:
+      ehr-project:
         ipv4_address: 10.5.0.5
 
 networks:
-  rede:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 10.5.0.0/16
-          gateway: 10.5.0.1
+  ehr-project:
+    external: true
