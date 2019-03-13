@@ -39,7 +39,8 @@ hibernate {
 environments {
     development {
         dataSource {
-           dbCreate = "create" //"update" // one of 'create', 'create-drop', 'update', 'validate', ''
+           //dbCreate = "create" //"update" // one of 'create', 'create-drop', 'update', 'validate', ''
+           dbCreate = "update" //"update" // one of 'create', 'create-drop', 'update', 'validate', ''
 
            //logSql = true
 
@@ -100,7 +101,7 @@ environments {
             String port = System.getenv('OPENSHIFT_MYSQL_DB_PORT')
             String dbName = System.getenv('OPENSHIFT_APP_NAME')
 
-            url = "jdbc:mysql://$host:$port/$dbName?useSSL=false" // ?useTimezone=true&serverTimezone=UTC
+            url = "jdbc:mysql://$host:$port/$dbName" // ?useTimezone=true&serverTimezone=UTC
 
             username = System.getenv('OPENSHIFT_MYSQL_DB_USERNAME')
             password = System.getenv('OPENSHIFT_MYSQL_DB_PASSWORD')
